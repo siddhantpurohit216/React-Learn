@@ -1,0 +1,25 @@
+{
+  "name": "reactjs-namastejs",
+  "version": "1.0.0",
+  "description": "learn reacrt",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddhantpurohit216/React-Learn.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Siddhanr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siddhantpurohit216/React-Learn/issues"
+  },
+  "homepage": "https://github.com/siddhantpurohit216/React-Learn#readme",
+  "dependencies": {
+    "parcel": "^2.12.0"
+  }
+}
