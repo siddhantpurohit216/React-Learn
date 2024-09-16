@@ -1,26 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-//react.createElement returns an obj
-const heading = React.createElement(
-  "h1",
-  { id: "heading" },
-  "Halooo from React!!"
+//we can call a react elem inside a another react elem using {obj_name}
+//can call a fcunctional compo inside antoher fun compo using {func_compo_name()} or <func_compo_name/>
+//can call another func compo from one func comp
+//all possible combi is possible 
+
+const elem=(
+  <h3>I am html elem</h3>
+)
+
+const Child=(prop)=>(
+  <>
+  <h2>I am child!!</h2>
+  <h1>{prop.value}</h1>
+  </>
+  
 );
-console.log(heading);//react object
+const Comp= ()=>(
+  <div>
+  <h1>Hello i am a functional component</h1>
 
-//it is not necessary to write React.createElem, use JSX instead(easy)
-//But js engine doesnot understand html hence jsx needs to be converted into js 
-//this is done by babel(js transpiler) present inside parcel
-//babel converts the html into the obj created by React.createElem 
+  {/* {Child(5)} */}
+  <Child value={5} />
+  {/* <Child></Child> */}
+  {elem}
 
-const jsxHeading =<h1 id="heading2">Halooo from React!!</h1>
-// console.lof=(jsxHeading)
+  </div>
+);
 
-
-//ReactDom.render converts that obj into html elem and renders it 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxHeading); 
-root.render(heading); //render method converts the react object into a html elem and puts inside root
-
-
+const root= ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Comp/>);
