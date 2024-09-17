@@ -37,6 +37,9 @@
     height: 300px;
     padding: 5px;
     margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: space-around;
+
 }
 .res-card:hover{
     border: 1px solid black;
@@ -52,3 +55,17 @@
     display: flex;
     flex-wrap: wrap;
 }
+.top-btn{
+    margin: 10px;
+}
+.ShemmerConainer{
+    display: flex;
+    flex-wrap: wrap;
+}   
+.ShemmerCard{
+    width: 200px;
+    height: 400px;
+    margin: 10px;
+    background-color: #f0f0f0;
+}
+
