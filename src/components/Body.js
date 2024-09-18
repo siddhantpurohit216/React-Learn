@@ -4,7 +4,9 @@ import Shemmer from "./shemmer";
 
 const Body = () => {
   const [restList, setRestList] = useState([]);
-  const [searchText, setSearchText] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filterdRestList, setFilterdRestList] = useState([]);
+
   
   console.log("Rendedering BODY compo");
 
@@ -35,6 +37,7 @@ const Body = () => {
         }
       );
     setRestList(restaurants);
+    setFilterdRestList(restaurants);
     console.log(restaurants);
     return restaurants;
   }
@@ -57,7 +60,7 @@ const Body = () => {
                 res.name.toLowerCase().includes(searchText.toLowerCase())
               );
               console.log(searchFilterdList);
-              setRestList(searchFilterdList);
+              setFilterdRestList(searchFilterdList);
             }}
           >
             Search
@@ -66,16 +69,16 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            let updatedList = restList.filter((rest) => rest.avgRating > 4.5);
+            let updatedList = filterdRestList.filter((rest) => rest.avgRating > 4.5);
             console.log(updatedList);
-            setRestList(updatedList);
+            setFilterdRestList(updatedList);
           }}
         >
           Top rated rest
         </button>
       </div>
       <div className="res-container">
-        {restList.map((restaurant) => (
+        {filterdRestList.map((restaurant) => (
           <ResturantCard key={restaurant.id} data={restaurant} />
         ))}
       </div>

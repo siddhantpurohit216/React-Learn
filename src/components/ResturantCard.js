@@ -1,7 +1,7 @@
 const styleCard = {
     backgroundColor: "#f0f0f0",
   };
-  
+    
 
 const ResturantCard = (props) => {
     const { data } = props; 
