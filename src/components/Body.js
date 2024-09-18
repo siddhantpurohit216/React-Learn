@@ -1,19 +1,18 @@
 import ResturantCard from "./ResturantCard";
 import { useEffect, useState } from "react";
 import Shemmer from "./shemmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restList, setRestList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterdRestList, setFilterdRestList] = useState([]);
 
-  
   console.log("Rendedering BODY compo");
 
   useEffect(() => {
     const data = fetchData();
   }, []);
-  
 
   // let restaurants;
   async function fetchData() {
@@ -69,7 +68,9 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            let updatedList = filterdRestList.filter((rest) => rest.avgRating > 4.5);
+            let updatedList = filterdRestList.filter(
+              (rest) => rest.avgRating > 4.5
+            );
             console.log(updatedList);
             setFilterdRestList(updatedList);
           }}
@@ -79,7 +80,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filterdRestList.map((restaurant) => (
-          <ResturantCard key={restaurant.id} data={restaurant} />
+          <Link to={"/resturant/" + restaurant.id} key={restaurant.id}>
+            <ResturantCard data={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
