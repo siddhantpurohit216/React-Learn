@@ -1,12 +1,13 @@
 import ResturantCard from "./ResturantCard";
 import { useEffect, useState } from "react";
 import Shemmer from "./shemmer";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 
 const Body = () => {
   const [restList, setRestList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterdRestList, setFilterdRestList] = useState([]);
+  const location = useLocation();
 
   console.log("Rendedering BODY compo");
 
@@ -14,7 +15,14 @@ const Body = () => {
     const data = fetchData();
   }, []);
 
-  // let restaurants;
+   // Effect to reset the filtered list when the path is "/"
+   useEffect(() => {
+    if (location.pathname === "/") {
+      setFilterdRestList(restList);
+      setSearchText(""); // Optionally clear the search input
+    }
+  }, [location, restList]);
+
   async function fetchData() {
     const res = await fetch(
       "https://www.swiggy.com/mapi/homepage/getCards?lat=23.02760&lng=72.58710"
