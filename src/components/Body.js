@@ -1,13 +1,13 @@
 import ResturantCard from "./ResturantCard";
 import { useEffect, useState } from "react";
 import Shemmer from "./shemmer";
-import { Link,useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restList, setRestList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterdRestList, setFilterdRestList] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
 
   console.log("Rendedering BODY compo");
 
@@ -15,13 +15,6 @@ const Body = () => {
     const data = fetchData();
   }, []);
 
-   // Effect to reset the filtered list when the path is "/"
-  //  useEffect(() => {
-  //   if (location.pathname === "/"  && !areListsEqual(filterdRestList, restList)) {
-  //     setFilterdRestList(restList);
-  //     setSearchText(""); // Optionally clear the search input
-  //   }
-  // }, [location, restList]);
 
   async function fetchData() {
     const res = await fetch(
@@ -47,15 +40,7 @@ const Body = () => {
     setFilterdRestList(restaurants);
     console.log(restaurants);
     return restaurants;
-  }
-
-
-   // Utility function to compare two arrays
-  //  const areListsEqual = (list1, list2) => {
-  //   if (list1.length !== list2.length) return false;
-  //   return list1.every((item, index) => item.id === list2[index].id);
-  // };
-
+    }
 
   if (restList.length === 0) return <Shemmer />;
   return (
