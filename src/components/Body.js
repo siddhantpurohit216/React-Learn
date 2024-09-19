@@ -16,12 +16,12 @@ const Body = () => {
   }, []);
 
    // Effect to reset the filtered list when the path is "/"
-   useEffect(() => {
-    if (location.pathname === "/") {
-      setFilterdRestList(restList);
-      setSearchText(""); // Optionally clear the search input
-    }
-  }, [location, restList]);
+  //  useEffect(() => {
+  //   if (location.pathname === "/"  && !areListsEqual(filterdRestList, restList)) {
+  //     setFilterdRestList(restList);
+  //     setSearchText(""); // Optionally clear the search input
+  //   }
+  // }, [location, restList]);
 
   async function fetchData() {
     const res = await fetch(
@@ -48,6 +48,15 @@ const Body = () => {
     console.log(restaurants);
     return restaurants;
   }
+
+
+   // Utility function to compare two arrays
+  //  const areListsEqual = (list1, list2) => {
+  //   if (list1.length !== list2.length) return false;
+  //   return list1.every((item, index) => item.id === list2[index].id);
+  // };
+
+
   if (restList.length === 0) return <Shemmer />;
   return (
     <div className="body">
