@@ -1,49 +1,48 @@
 import React from "react";
 
 class UserClass extends React.Component {
+  constructor(props) {
+    super(props);
+    // console.log(props)
 
-    constructor(props)
-    {
-        super(props)
-        // console.log(props)
+    this.state = {
+      count1: 1,
+      count2: 2,
+      user: "",
+    };
+    console.log(props.name + "child constructor");
+  }
 
-        this.state={
-            count1:1,
-            count2:2
-        }
-        console.log(props.name+"child constructor")
+  async componentDidMount() {
+    console.log(this.props.name + "child DidMount");
 
-    }
+    //wrong uurl:(skip)
+    // const data = await fetch("https://api.github.com/user/siddhantpurohit225");
+    // const jsonData = await data.json();
 
-    componentDidMount()
-    {
-        console.log(this.props.name+ "child DidMount");
-    }
+    this.setState({
+      count1: this.state.count1 + 1,
+      user: "sidd",
+    });
+  }
+
+  componentDidUpdate() {
+    console.log("component updated!!");
+  }
 
   render() {
+    const { name, location } = this.props;
+    console.log(name + "child render");
 
-    const {name,location}=this.props;
-    console.log(name+"child render")
-
-    return(
+    return (
       <div>
         <hr></hr>
         <h1>Class Compo:</h1>
         <h1>{name}</h1>
-        <h2>{location}</h2>
-        <h3>{this.state.count1}</h3>
-        <button
-        onClick={()=>{
-            this.setState({
-                count1:++this.state.count1,
-                count2:this.state.count2+1
-            })
-        }}
-        >Inc</button>
-        <h3>{this.state.count2}</h3>
-        {/* <h3>{console.log("Halo")}</h3> */}
 
-      </div>    
+        <h1>{this.state.user}</h1>
+        <h3>{this.state.count2}</h3>
+      </div>
     );
   }
 }

@@ -21,7 +21,6 @@ const approutes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -40,6 +39,8 @@ const approutes = createBrowserRouter([
         element: <ResturantDetail />,
       },
     ],
+    errorElement: <Error />,
+
   },
 ]);
 

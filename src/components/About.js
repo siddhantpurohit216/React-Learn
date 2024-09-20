@@ -15,14 +15,15 @@ class About extends React.Component{
         console.log("parent DidMount");
     }
 
+   
+
+
     render(){
         console.log("Parent render")
 
         return(
             <div>
                 <h1>About Us</h1>
-                <User name={"haloFunctional"} />
-                <UserClass name={"First"} location={"Dehradun"}/>
                 <UserClass name={"Second"} location={"Landor"}/>
 
             </div>
