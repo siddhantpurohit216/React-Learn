@@ -19,7 +19,9 @@ const Body = () => {
   async function fetchData() {
     const res = await fetch(
       "https://www.swiggy.com/mapi/homepage/getCards?lat=23.02760&lng=72.58710"
+      
     );
+    console.log("making API calls to fecth restDATA!")
     const d = await res.json();
     // console.log(d);
     const restaurants =
