@@ -8,7 +8,7 @@ const Error=()=>{
 
     return(
         <div>
-            <h1>{err.data + "  " + err.error.status+ " !!"}</h1>
+            <h1>{err.data }</h1>
         </div>
     )
 }
