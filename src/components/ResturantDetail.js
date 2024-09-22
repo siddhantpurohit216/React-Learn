@@ -13,10 +13,10 @@ const ResturantDetail = () => {
     <Shemmer />
   ) : (
     <div>
-      <h1>{data.id}</h1>
-      <h1>{data.name}</h1>
-      <h1>{data.city}</h1>
-      <h1>{data.costForTwoMessage}</h1>
+      <h1 className="dark:text-white">{data.id}</h1>
+      <h1 className="dark:text-white">{data.name}</h1>
+      <h1 className="dark:text-white">{data.city}</h1>
+      <h1 className="dark:text-white">{data.costForTwoMessage}</h1>
     </div>
   );
 };

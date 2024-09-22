@@ -7,8 +7,6 @@ const Body = () => {
   const [restList, setRestList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterdRestList, setFilterdRestList] = useState([]);
-  
-  
 
   console.log("Rendedering BODY compo");
 
@@ -16,14 +14,12 @@ const Body = () => {
     const data = fetchData();
   }, []);
 
-
   async function fetchData() {
     const res = await fetch(
       "https://www.swiggy.com/mapi/homepage/getCards?lat=23.02760&lng=72.58710"
-      
     );
 
-    console.log("making API calls to fecth restDATA!")
+    console.log("making API calls to fecth restDATA!");
     const d = await res.json();
     // console.log(d);
     const restaurants =
@@ -44,22 +40,23 @@ const Body = () => {
     setFilterdRestList(restaurants);
     console.log(restaurants);
     return restaurants;
-    }
+  }
 
   if (restList.length === 0) return <Shemmer />;
   return (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="dark:bg-slate-800">
+      <div className="flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="search-box border border-solid border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           ></input>
           <button
+            className="px-4 py-2 bg-green-100  m-4 rounded-lg"
             onClick={() => {
               const searchFilterdList = restList.filter((res) =>
                 res.name.toLowerCase().includes(searchText.toLowerCase())
@@ -71,20 +68,22 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            let updatedList = filterdRestList.filter(
-              (rest) => rest.avgRating > 4.5
-            );
-            console.log(updatedList);
-            setFilterdRestList(updatedList);
-          }}
-        >
-          Top rated rest
-        </button>
+        <div className="m-4 p-4 flex items-center">
+          <button className="px-4 py-2 bg-gray-100  m-4 rounded-lg"
+            
+            onClick={() => {
+              let updatedList = filterdRestList.filter(
+                (rest) => rest.avgRating > 4.5
+              );
+              console.log(updatedList);
+              setFilterdRestList(updatedList);
+            }}
+          >
+            Top rated rest
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filterdRestList.map((restaurant) => (
           <Link to={"/resturant/" + restaurant.id} key={restaurant.id}>
             <ResturantCard data={restaurant} />
