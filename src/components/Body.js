@@ -11,12 +11,13 @@ const Body = () => {
   console.log("Rendedering BODY compo");
 
   useEffect(() => {
-    const data = fetchData();
+    fetchData();
   }, []);
 
   async function fetchData() {
     const res = await fetch(
       "https://www.swiggy.com/mapi/homepage/getCards?lat=23.02760&lng=72.58710"
+      // "https://www.swiggy.com/mapi/homepage/getCards?lat=21.99740&lng=79.00110"
     );
 
     console.log("making API calls to fecth restDATA!");
