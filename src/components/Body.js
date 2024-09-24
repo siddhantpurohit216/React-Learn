@@ -1,7 +1,8 @@
 import ResturantCard from "./ResturantCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shemmer from "./shemmer";
 import { Link } from "react-router-dom";
+import userContext from "../utlis/UserContext";
 
 const Body = () => {
   const [restList, setRestList] = useState([]);
@@ -9,6 +10,8 @@ const Body = () => {
   const [filterdRestList, setFilterdRestList] = useState([]);
 
   console.log("Rendedering BODY compo");
+
+  const {loggedInUser,setUserName}=useContext(userContext);
 
   useEffect(() => {
     fetchData();
@@ -68,6 +71,15 @@ const Body = () => {
           >
             Search
           </button>
+          {/* {change here} */}
+          <input
+            type="text"
+            className="search-box border border-solid border-black"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          ></input>
         </div>
         <div className="m-4 p-4 flex items-center">
           <button className="px-4 py-2 bg-gray-100  m-4 rounded-lg"

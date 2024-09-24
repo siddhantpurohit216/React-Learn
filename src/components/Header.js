@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utlis/contants";
 import { Link } from "react-router-dom";
 import useOnline from "../utlis/useOnline";
+import userContext from "../utlis/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Logout");
 
+  const {loggedInUser}=useContext(userContext);
   const isOnline = useOnline();
 
   return (
@@ -30,6 +32,9 @@ const Header = () => {
           </li>
           <li className="px-4 dark:text-white">
             <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="px-4 dark:text-white">
+            {loggedInUser}
           </li>
           <button className="px-4 dark:text-white hover:bg-slate-50 hover:text-black "
             onClick={() => {
