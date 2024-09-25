@@ -8,6 +8,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Error from "./src/components/Error";
 import ResturantDetail from "./src/components/ResturantDetail";
 import userContext from "./src/utlis/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./src/utlis/appStore";
 
 const Grocery = lazy(() => import("./src/components/Grocery"));
 
@@ -16,13 +18,14 @@ const App = () => {
   const [userName,setUserName]=useState("user");
 
   return (
+    <Provider store={appStore}>
     <userContext.Provider value={{loggedInUser:userName, setUserName}}>
     <div className="App">
       <Header />
       <Outlet />
     </div>
     </userContext.Provider>
-
+    </Provider>
   );
 };
 
@@ -61,5 +64,4 @@ const approutes = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<App />);
 root.render(<RouterProvider router={approutes} />);

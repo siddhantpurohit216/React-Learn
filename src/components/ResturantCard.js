@@ -5,9 +5,9 @@ const ResturantCard = (props) => {
   const { data } = props;
   const img_url=REST_CARD_IMG_URL
   return (
-    <div className=" m-4 p-4 w-[250px] rounded-lg bg-gray-200 hover:bg-gray-300" >
+    <div className="p-4 w-[250px] h-full rounded-lg bg-gray-200 hover:bg-gray-300" >
       <img
-        className="res-logo"
+        className="res-logo w-full h-36"
         src={img_url + data.cloudinaryImageId}
         alt="Logo"
       />
